@@ -17,7 +17,7 @@ class UserService {
       supportedAuthenticationProviders.push({
         provider: "GOOGLE_OAUTH",
         displayName: "Google",
-        displayText: "Continue with Google",
+        displayText: "Continue with Google to ChaiForms",
         authUrl: url,
       });
     }
