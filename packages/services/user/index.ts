@@ -1,7 +1,7 @@
 import { db } from "@repo/database";
 import { usersTable } from "@repo/database/schema";
 import { env } from "../env";
-import { googleOAuth2Client } from "../clients/google-oauth";
+import { googleOAuth2Client } from "../clients/google-oauth.service";
 import { GetAuthenticationMethodOutputSchema } from "./model";
 
 class UserService {
@@ -17,7 +17,7 @@ class UserService {
       supportedAuthenticationProviders.push({
         provider: "GOOGLE_OAUTH",
         displayName: "Google",
-        displayText: "Signin with Google",
+        displayText: "Continue with Google",
         authUrl: url,
       });
     }
