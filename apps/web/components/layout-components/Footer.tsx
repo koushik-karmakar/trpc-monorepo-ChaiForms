@@ -1,3 +1,4 @@
+"use client";
 const productLinks = ["FEATURES", "PRICING", "CHANGELOG", "ROADMAP"];
 const companyLinks = ["ABOUT", "BLOG", "CAREERS"];
 const resourceLinks = ["DOCS", "COMPONENTS", "COMMUNITY"];

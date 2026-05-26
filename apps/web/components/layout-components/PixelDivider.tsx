@@ -1,3 +1,4 @@
+"use client";
 export default function PixelDivider() {
   return (
     <div className="flex w-full">

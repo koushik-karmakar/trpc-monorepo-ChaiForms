@@ -1,3 +1,4 @@
+"use client";
 const logos = ["STRIPE", "VERCEL", "LINEAR", "NOTION", "LOOM"];
 export default function Logos() {
   return (

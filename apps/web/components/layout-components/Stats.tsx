@@ -1,3 +1,4 @@
+"use client";
 const stats = [
   { value: "50K+", label: "FORMS CREATED", border: true },
   { value: "2M+", label: "RESPONSES COLLECTED", border: true },

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const links = [
@@ -60,12 +61,12 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between h-[60px] px-6 md:px-[48px] max-w-[1400px] mx-auto">
         {/* ── Logo ── */}
-        <a href="#" className="flex items-center gap-[10px] shrink-0 group">
+        <Link href={"/"} className="flex items-center gap-[10px] shrink-0 group">
           <span className="w-[10px] h-[10px] bg-[#FFD600] group-hover:scale-110 transition-transform" />
           <span className="font-grotesk text-[13px] font-bold text-[#F5F5F0] tracking-[2.5px]">
             FORMCRAFT
           </span>
-        </a>
+        </Link>
 
         {/* ── Desktop nav ── */}
         <nav className="hidden md:flex items-center gap-[36px]">
@@ -98,18 +99,18 @@ export default function Navbar() {
 
         {/* ── Desktop CTA ── */}
         <div className="hidden md:flex items-center gap-[14px]">
-          <a
-            href="#"
+          <Link
+            href="/login"
             className="font-ibm-mono text-[10px] text-[#555] tracking-[1.5px] hover:text-[#F5F5F0] transition-colors"
           >
             LOG IN
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/signup"
             className="font-grotesk text-[11px] font-bold text-[#0A0A0A] bg-[#FFD600] tracking-[1.5px] px-[18px] py-[9px] hover:bg-[#F5F5F0] transition-colors"
           >
             START FOR FREE
-          </a>
+          </Link>
         </div>
 
         {/* ── Mobile burger ── */}

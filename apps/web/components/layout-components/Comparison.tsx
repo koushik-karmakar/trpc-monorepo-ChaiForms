@@ -1,3 +1,4 @@
+"use client";
 import SectionHeader from "./SectionHeader";
 const rows = [
   { feature: "CONDITIONAL LOGIC", pc: "[✓]", figma: "[✓]", sketch: "[—]", framer: "[✓]" },
