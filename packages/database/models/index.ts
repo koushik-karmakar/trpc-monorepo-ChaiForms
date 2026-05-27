@@ -13,6 +13,7 @@ import {
   date,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
+import { nullable } from "zod";
 
 // ======================================================================
 // USER TABLE
