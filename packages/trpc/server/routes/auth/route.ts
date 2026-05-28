@@ -1,7 +1,7 @@
 import { z, zodUndefinedModel } from "../../schema";
 import { userService } from "../../services";
 
-import { publicProcedure, router } from "../../trpc";
+import { authenticatedProcedure, publicProcedure, router } from "../../trpc";
 import { generatePath } from "../../utils/path-generator";
 import {
   authenticationWithGoogleInputSchema,
@@ -11,6 +11,9 @@ import {
   googleCallbackInputSchema,
   googleCallbackOutputSchema,
   getAuthenticationMethodOutputSchema,
+  GetAuthenticationMethodOutputSchemaType,
+  getLoggedInUserInfoInputSchema,
+  getLoggedInUserInfoOutputSchema,
 } from "./model";
 import { TRPCError } from "@trpc/server";
 import { googleOAuth2Client } from "@repo/services/clients/google-oauth.service";
@@ -119,5 +122,23 @@ export const authRouter = router({
           message: "Failed to fetch authentication methods",
         });
       }
+    }),
+
+  getLoggedInUserInfo: authenticatedProcedure
+    .meta({
+      openapi: { method: "GET", path: getPath("/getLoggedInUserInfo"), tags: TAGS },
+    })
+    .input(getLoggedInUserInfoInputSchema)
+    .output(getLoggedInUserInfoOutputSchema)
+    .query(async ({ ctx }) => {
+      const { id, email, name, avatarImageUrl } = await userService.getUserInfoByID(
+        ctx.user.userId,
+      );
+      return {
+        id,
+        name,
+        email,
+        avatarImageUrl,
+      };
     }),
 });

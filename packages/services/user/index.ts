@@ -85,6 +85,19 @@ class UserService {
       };
     }
   }
+
+  public async getUserInfoByID(id: string) {
+    
+  }
+  public async verifyAndDecodeUser(token: string) {
+    try {
+      const result = JWT.verify(token, env.JWT_TOKEN_SECRET) as GenerateTokenInputSchemaType;
+      if (!result) throw new Error("Fail to parse token");
+      return result;
+    } catch (error) {
+      throw new Error("Invalid token");
+    }
+  }
 }
 
 export default UserService;

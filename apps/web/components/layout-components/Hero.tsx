@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import GlitchText from "./GlitchText";
 import CollabCursors from "./CollabCursors";
+import Link from "next/link";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -43,11 +44,11 @@ export default function Hero() {
 
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-[16px] w-full sm:w-auto">
-        <button className="flex items-center justify-center w-full sm:w-[220px] h-[56px] bg-[#FFD600] hover:bg-[#e6c200] transition-colors">
+        <Link href={"/login"} className="flex items-center justify-center w-full sm:w-[220px] h-[56px] bg-[#FFD600] hover:bg-[#e6c200] transition-colors">
           <span className="font-grotesk text-[12px] font-bold text-[#0A0A0A] tracking-[2px]">
             BUILD YOUR FIRST FORM
           </span>
-        </button>
+        </Link>
         <button className="flex items-center justify-center w-full sm:w-[200px] h-[56px] bg-[#0A0A0A] border-2 border-[#3D3D3D] hover:border-[#888888] transition-colors">
           <span className="font-ibm-mono text-[12px] text-[#888888] tracking-[2px]">
             VIEW LIVE DEMO &gt;

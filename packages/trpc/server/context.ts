@@ -5,10 +5,14 @@ import {
   getCookie as getCookieUtil,
 } from "./utils/cookie";
 import { CreateExpressContextOptions } from "@trpc/server/adapters/express";
+export interface TRPCCtxuser {
+  id: string;
+}
 export interface TRPCContext {
   setCookie: (name: string, value: string, options: CookieOptions) => void;
   getCookie: (name: string) => string | undefined;
   clearCookie: (name: string) => void;
+  user?: TRPCCtxuser;
 }
 export async function createContext({ req, res }: CreateExpressContextOptions) {
   const ctx: TRPCContext = {
@@ -21,6 +25,7 @@ export async function createContext({ req, res }: CreateExpressContextOptions) {
     clearCookie(name: string) {
       clearCookieUtil(res, name);
     },
+    user: undefined,
   };
   return ctx;
 }

@@ -1,6 +1,7 @@
 import { trpc } from "../../trpc/client";
 
 export const useGoogleAuthentication = () => {
+  const utils = trpc.useUtils();
   const {
     mutateAsync: authenticationWithGoogleMutateAsync,
     mutate: authenticationWithGoogleMutate,
@@ -9,7 +10,11 @@ export const useGoogleAuthentication = () => {
     isPending,
     isSuccess,
     isIdle,
-  } = trpc.auth.authenticationWithGoogle.useMutation();
+  } = trpc.auth.authenticationWithGoogle.useMutation({
+    onSuccess: async () => {
+      await utils.auth.getLoggedInUserInfo.invalidate();
+    },
+  });
   return {
     authenticationWithGoogleMutateAsync,
     authenticationWithGoogleMutate,
@@ -20,6 +25,7 @@ export const useGoogleAuthentication = () => {
     isIdle,
   };
 };
+
 export const useGetAuthenticationMethods = () => {
   const {
     data: methods,
@@ -33,5 +39,24 @@ export const useGetAuthenticationMethods = () => {
     isLoading,
     isError,
     error,
+  };
+};
+
+export const useUser = () => {
+  const {
+    data: userInfo,
+    error,
+    isError,
+    isPending,
+    isSuccess,
+    isLoading,
+  } = trpc.auth.getLoggedInUserInfo.useQuery();
+  return {
+    userInfo,
+    error,
+    isError,
+    isPending,
+    isSuccess,
+    isLoading,
   };
 };
